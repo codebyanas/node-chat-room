@@ -1,0 +1,11 @@
+{
+    "editor.glyphMargin": false,
+    "git.decorations.enabled": true,
+    "git.detectSubmodules": true,
+    "git.enableStatusBarSync": true,
+    "git.enabled": true,
+    "git.showCommitInput": true,
+    "git.showInlineOpenFileAction": true,
+    "git.showProgress": true,
+    "editor.codeLens": false
+}
