@@ -5,7 +5,11 @@
     "git.enableStatusBarSync": true,
     "git.enabled": true,
     "git.showCommitInput": true,
-    "git.showInlineOpenFileAction": true,
+    "git.showInlineOpenFileAction": false,
     "git.showProgress": true,
-    "editor.codeLens": false
+    "editor.codeLens": false,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "scm.workingSets.default": "current",
+    "workbench.cloudChanges.continueOn": "prompt",
+    "scm.showChangesSummary": false
 }

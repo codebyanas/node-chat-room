@@ -5,7 +5,7 @@ socket.on("message", (message) => {
 });
 
 // Elements
-
+const me = me()
 const $messages = document.querySelector('#messages')
 const $messageForm = document.querySelector("#message-form");
 const $messageFormButton = $messageForm.querySelector("button");
