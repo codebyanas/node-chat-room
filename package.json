@@ -13,12 +13,8 @@
   "dependencies": {
     "bad-words": "3.0.0",
     "express": "^4.19.2",
-<<<<<<< HEAD
     "socket.io": "^4.7.5",
     "yarn": "^1.22.22"
-=======
-    "socket.io": "^4.7.5"
->>>>>>> 102172254cb87439c7ebd88227eb4db3706f027b
   },
   "devDependencies": {
     "nodemon": "^3.1.4"

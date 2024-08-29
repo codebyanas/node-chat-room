@@ -1,11 +1,10 @@
-const socket = io();
+const socket = io(); 
 
 socket.on("message", (message) => {
     console.log(message);
 });
 
 // Elements
-const me = me()
 const $messages = document.querySelector('#messages')
 const $messageForm = document.querySelector("#message-form");
 const $messageFormButton = $messageForm.querySelector("button");
@@ -15,6 +14,9 @@ const $messageFormInput = $messageForm.querySelector("#message-input");
 // Templates
 const $messageTemplate = document.querySelector('#message-template').innerHTML
 const $locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
+
+// Options
+const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 
 socket.on('message', (message) => {
     console.log(message)
@@ -40,7 +42,7 @@ $messageForm.addEventListener("submit", (e) => {
     // disable
     $messageFormButton.setAttribute("disabled", "disabled");
 
-    const message = document.querySelector("#message-input").value;
+    const message = $messageFormInput.value;
 
     socket.emit("sendMessage", message, (error) => {
         // enabled
@@ -78,49 +80,10 @@ $sendLocationButton.addEventListener("click", () => {
         );
     });
 });
-=======
-const socket = io()
 
-socket.on('message', (message) => {
-    console.log(message)
-})
-
-const $messageForm = document.querySelector('#message-form')
-const $messageFormInput = $messageForm.querySelector('#message-input')
-const $messageFormButton = $messageForm.querySelector('button')
-
-$messageForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-
-    // disable
-    $messageFormButton.setAttribute('disabled', 'disabled')
-
-    const message = document.querySelector('#message-input').value
-
-    socket.emit('sendMessage', message, (error) => {
-        // enabled
-        $messageFormButton.removeAttribute('disabled')
-        $messageFormInput.value = ''
-        $messageFormInput.focus()
-
-        if (error) {
-            console.log(error)
-        }
-
-        console.log('Message is delivered!')
-    })
-})
-
-document.querySelector('#send-location').addEventListener('click', () => {
-    if (!navigator.geolocation) {
-        return alert('Geolocation is not supported by your browser.')
+socket.emit('join', { username, room }, (error) => {
+    if (error) {
+        alert(error)
+        location.href = '/'
     }
-
-    navigator.geolocation.getCurrentPosition((position) => {
-        socket.emit('sendLocation', {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-        })
-    })
 })
->>>>>>> 102172254cb87439c7ebd88227eb4db3706f027b
